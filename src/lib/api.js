@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const api = axios.create({
+  // baseURL: "/api",
   baseURL: "https://next-e-commerce-iti-82x6.vercel.app/api",
 });
 

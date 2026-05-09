@@ -56,14 +56,14 @@ export default function Navbar() {
   if (!mounted) {
     return (
       <motion.nav
-        className={`bg-white border-b sticky top-0 z-50 transition-all ${scrolled ? "shadow-lg" : "shadow-sm"}`}
+        className={`bg-surface/80 backdrop-blur-md border-b sticky top-0 z-50 transition-all ${scrolled ? "shadow-lg shadow-primary/5 border-white/10" : "border-transparent"}`}
       >
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
           <Link
             href="/"
             className="text-2xl font-bold bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent"
           >
-            ShopZone
+            Shop Hole
           </Link>
         </div>
       </motion.nav>
@@ -82,7 +82,7 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      className={`bg-white border-b sticky top-0 z-50 transition-all ${scrolled ? "shadow-lg" : "shadow-sm border-gray-200"}`}
+      className={`bg-surface/80 backdrop-blur-md border-b sticky top-0 z-50 transition-all ${scrolled ? "shadow-lg shadow-primary/5 border-white/10" : "border-transparent"}`}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
@@ -93,21 +93,39 @@ export default function Navbar() {
           href="/"
           className="text-2xl font-bold bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent hover:scale-105 transition-transform"
         >
-          ShopZone
+          Shop Hole
         </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
           <Link
+            href="/"
+            className="text-gray-300 hover:text-primary font-medium transition-all hover:scale-105"
+          >
+            Home
+          </Link>
+          <Link
             href="/products"
-            className="text-gray-600 hover:text-primary font-medium transition-all hover:scale-105"
+            className="text-gray-300 hover:text-primary font-medium transition-all hover:scale-105"
           >
             Products
+          </Link>
+          <Link
+            href="/about"
+            className="text-gray-300 hover:text-primary font-medium transition-all hover:scale-105"
+          >
+            About
+          </Link>
+          <Link
+            href="/contact"
+            className="text-gray-300 hover:text-primary font-medium transition-all hover:scale-105"
+          >
+            Contact
           </Link>
           {isLoggedIn && user?.role === "ADMIN" && (
             <Link
               href="/admin"
-              className="text-gray-600 hover:text-primary font-medium transition-all hover:scale-105"
+              className="text-gray-300 hover:text-primary font-medium transition-all hover:scale-105"
             >
               Admin
             </Link>
@@ -115,7 +133,7 @@ export default function Navbar() {
           {isLoggedIn && user?.role === "SELLER" && (
             <Link
               href="/seller"
-              className="text-gray-600 hover:text-primary font-medium transition-all hover:scale-105"
+              className="text-gray-300 hover:text-primary font-medium transition-all hover:scale-105"
             >
               Dashboard
             </Link>
@@ -132,7 +150,7 @@ export default function Navbar() {
               >
                 <Link
                   href="/cart"
-                  className="relative text-gray-600 hover:text-primary text-xl transition-colors"
+                  className="relative text-gray-300 hover:text-primary text-xl transition-colors"
                 >
                   <FiShoppingCart size={22} />
                   {itemCount > 0 && (
@@ -154,7 +172,7 @@ export default function Navbar() {
               >
                 <Link
                   href="/profile"
-                  className="text-gray-600 hover:text-primary text-xl transition-colors"
+                  className="text-gray-300 hover:text-primary text-xl transition-colors"
                 >
                   <FiUser size={22} />
                 </Link>
@@ -162,14 +180,14 @@ export default function Navbar() {
 
               <Link
                 href="/orders"
-                className="text-gray-600 hover:text-primary font-medium transition-all hover:scale-105"
+                className="text-gray-300 hover:text-primary font-medium transition-all hover:scale-105"
               >
                 Orders
               </Link>
 
               <motion.button
                 onClick={handleLogout}
-                className="text-gray-500 hover:text-red-500 text-xl transition-colors"
+                className="text-gray-400 hover:text-red-400 text-xl transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -217,24 +235,45 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <motion.div
-        className="md:hidden bg-white border-t px-4 py-4 flex flex-col gap-3"
+        className="md:hidden bg-surface-dark border-t border-white/10 px-4 py-4 flex flex-col gap-3"
         initial={false}
         animate={{ height: menuOpen ? "auto" : 0, opacity: menuOpen ? 1 : 0 }}
         transition={{ duration: 0.3 }}
         style={{ overflow: "hidden" }}
       >
         <Link
+          href="/"
+          onClick={closeMenu}
+          className="py-2 text-gray-300 hover:text-primary font-medium transition-colors"
+        >
+          Home
+        </Link>
+        <Link
           href="/products"
           onClick={closeMenu}
-          className="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+          className="py-2 text-gray-300 hover:text-primary font-medium transition-colors"
         >
           Products
+        </Link>
+        <Link
+          href="/about"
+          onClick={closeMenu}
+          className="py-2 text-gray-300 hover:text-primary font-medium transition-colors"
+        >
+          About
+        </Link>
+        <Link
+          href="/contact"
+          onClick={closeMenu}
+          className="py-2 text-gray-300 hover:text-primary font-medium transition-colors"
+        >
+          Contact
         </Link>
         {isLoggedIn && user?.role === "ADMIN" && (
           <Link
             href="/admin"
             onClick={closeMenu}
-            className="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+            className="py-2 text-gray-300 hover:text-primary font-medium transition-colors"
           >
             Admin
           </Link>
@@ -243,32 +282,32 @@ export default function Navbar() {
           <Link
             href="/seller"
             onClick={closeMenu}
-            className="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+            className="py-2 text-gray-300 hover:text-primary font-medium transition-colors"
           >
             Dashboard
           </Link>
         )}
-        <hr className="my-2" />
+        <hr className="my-2 border-white/10" />
         {isLoggedIn ? (
           <>
             <Link
               href="/cart"
               onClick={closeMenu}
-              className="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+              className="py-2 text-gray-300 hover:text-primary font-medium transition-colors"
             >
               Cart ({itemCount})
             </Link>
             <Link
               href="/profile"
               onClick={closeMenu}
-              className="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+              className="py-2 text-gray-300 hover:text-primary font-medium transition-colors"
             >
               Profile
             </Link>
             <Link
               href="/orders"
               onClick={closeMenu}
-              className="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+              className="py-2 text-gray-300 hover:text-primary font-medium transition-colors"
             >
               Orders
             </Link>
@@ -287,7 +326,7 @@ export default function Navbar() {
             <Link
               href="/auth/login"
               onClick={closeMenu}
-              className="py-2 text-gray-700 hover:text-primary font-medium transition-colors"
+              className="py-2 text-gray-300 hover:text-primary font-medium transition-colors"
             >
               Login
             </Link>

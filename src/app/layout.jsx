@@ -2,8 +2,8 @@ import "./globals.css";
 import Providers from "@/app/providers";
 
 export const metadata = {
-  title: "ShopZone",
-  description: "E-Commerce Platform",
+  title: "Shop Hole",
+  description: "Ultra-Modern E-Commerce Platform",
 };
 
 export default function RootLayout({ children }) {

@@ -37,12 +37,12 @@ export default function ProductCard({ product }) {
     >
       <Link href={`/products/${product._id}`}>
         <motion.div
-          className="card hover:shadow-xl transition-all group flex flex-col h-full overflow-hidden bg-white"
+          className="card hover:shadow-2xl transition-all group flex flex-col h-full overflow-hidden"
           whileHover={{ y: -8 }}
           transition={{ duration: 0.2 }}
         >
           {/* Image Container */}
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg h-48 mb-4 overflow-hidden flex items-center justify-center relative">
+          <div className="bg-gradient-to-br from-surface to-surface-dark border-b border-white/5 rounded-lg h-48 mb-4 overflow-hidden flex items-center justify-center relative">
             {product.images?.[0] ? (
               <motion.img
                 src={product.images[0]}
@@ -52,11 +52,11 @@ export default function ProductCard({ product }) {
                 transition={{ duration: 0.3 }}
               />
             ) : (
-              <div className="text-gray-300 text-5xl">📦</div>
+              <div className="text-gray-700 text-5xl">📦</div>
             )}
             {product.stock === 0 && (
               <motion.div
-                className="absolute inset-0 bg-black/40 flex items-center justify-center"
+                className="absolute inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center"
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
               >
@@ -78,19 +78,19 @@ export default function ProductCard({ product }) {
               {product.category?.name || "Uncategorized"}
             </motion.p>
 
-            <h3 className="font-bold text-gray-900 mb-2 line-clamp-2 text-sm leading-snug">
+            <h3 className="font-bold text-white mb-2 line-clamp-2 text-sm leading-snug">
               {product.name}
             </h3>
 
             {/* Rating */}
             <div className="flex items-center gap-2 text-sm mb-3">
               <div className="flex items-center gap-0.5">
-                <FiStar className="fill-yellow-400 text-yellow-400" size={14} />
-                <span className="font-semibold text-gray-900">
+                <FiStar className="fill-yellow-400 text-yellow-400 drop-shadow-[0_0_5px_rgba(250,204,21,0.5)]" size={14} />
+                <span className="font-bold text-white">
                   {(product.ratingsAverage || 0).toFixed(1)}
                 </span>
               </div>
-              <span className="text-gray-500">
+              <span className="text-gray-400">
                 ({product.ratingsCount || 0})
               </span>
             </div>
@@ -98,7 +98,7 @@ export default function ProductCard({ product }) {
             {/* Price & Button */}
             <div className="flex items-center justify-between mt-auto gap-2">
               <div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-primary to-indigo-600 bg-clip-text text-transparent">
+                <span className="text-2xl font-black text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
                   ${product.price}
                 </span>
               </div>
