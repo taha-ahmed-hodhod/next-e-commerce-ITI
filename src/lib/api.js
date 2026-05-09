@@ -2,9 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const api = axios.create({
-  // baseURL: "/api",
-  baseURL: "https://next-e-commerce-iti.vercel.app/api",
-
+  baseURL: "/api",
 });
 
 api.interceptors.request.use((config) => {
