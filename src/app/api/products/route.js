@@ -5,14 +5,6 @@ import Product from "@/models/product.model";
 import Category from "@/models/category.model";
 import User from "@/models/user.model";
 
-// Allow larger request bodies for base64 image strings (up to 4MB)
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: "4mb",
-    },
-  },
-};
 
 export async function GET(request) {
   await connectDB();
