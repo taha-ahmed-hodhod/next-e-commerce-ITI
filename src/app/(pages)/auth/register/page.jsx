@@ -51,7 +51,6 @@ export default function RegisterPage() {
             <select className="input-field" value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })}>
               <option value="USER">Customer</option>
               <option value="SELLER">Seller</option>
-              <option value="ADMIN">Admin</option>
             </select>
           </div>
           <button type="submit" className="btn-primary w-full py-3" disabled={loading}>
